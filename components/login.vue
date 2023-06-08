@@ -51,29 +51,24 @@ import { defineComponent } from 'vue';
 export default defineComponent({
 	data() {
 		return {
-			email: resData.email,
-			password: resData.password,
+			email: '',
+			password: '',
 		};
 	},
 	methods: {
 		submitForm() {
 			// Perform form submission logic here
-			console.log('Form submitted');
-            const serialized = JSON.stringify({email: this.email, password: this.password});
-			const { data: resDataSuccess } = await useFetch('/api/test', {
-				method: 'post',
-				body: { email: this.email, password: this.password}
-			});
-            alert(resDataSuccess);
-			const { data: resData } = await useFetch('/api/test');
+            const serialized = JSON.stringify({email: this.email, password: this.password})
+			console.log(serialized)
+			const res = $fetch('/api/test', { method: 'post', body: {email: this.email, password: this.password} })
+			console.log(res)
+			// const { data: resDataSuccess } = await useFetch('/api/test', {
+			// 	method: 'post',
+			// 	body: { email: this.email, password: this.password}
+			// });
+            // console.log(resDataSuccess);
+			// const { data: resData } = await useFetch('/api/test');
 		},
 	},
 });
 </script>
-
-<style scoped>
-/* @import '@/assets/css/tailwind.css'; */
-.container {
-	max-width: 500px;
-}
-</style>
