@@ -26,5 +26,6 @@ export default defineNuxtConfig({
 		// 	base: './.data/db'
 		// }
 		}
-	}	  
+	},
+	modules: ['@sidebase/nuxt-auth'],
 })
