@@ -29,7 +29,7 @@
 				<div class="flex items-center justify-between">
 					<button
 						class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-						type="submit"
+						@click.prevent="signIn('credentials', { username: this.username, password: this.password, callbackUrl: '/'})"
 					>
 						Sign In
 					</button>
@@ -45,6 +45,14 @@
 	</div>
 </template>
 
+<script lang="ts" setup>
+	const { signIn } = useAuth()
+	definePageMeta({
+		auth: {
+			navigateAuthenticatedTo: 'http://ec2-44-203-149-17.compute-1.amazonaws.com/',
+		}
+	})
+</script>
 <script lang="ts">
 export default defineComponent({
 	data() {
@@ -54,17 +62,19 @@ export default defineComponent({
 		};
 	},
 	methods: {
-		async login() {
-			// Perform form submission logic here
-			const res = await $fetch('/api/login', {
-				method: 'post',
-				body: {
-					username: this.username,
-					password: this.password,
-				}
-        	})
-			console.log(res)
-		},
+		// async login() {
+		// 	// Perform form submission logic here
+		// 	const res = await $fetch('/api/login', {
+		// 		method: 'post',
+		// 		body: {
+		// 			username: this.username,
+		// 			password: this.password,
+		// 		}
+        // 	})
+		// 	console.log(res)
+		// },
 	},
-});
+})
+
+
 </script>

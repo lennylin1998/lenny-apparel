@@ -6,6 +6,7 @@
 					<h1 class="block text-gray-700 text-sm font-bold mb-2">
 						This is Index
 					</h1>
+					<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" @click.prevent="submitForm">{{ data.value }}</button>
 				</div>
 				<div class="flex items-center justify-between">
 					<NuxtLink
@@ -25,7 +26,10 @@
 		</div>
 	</div>
 </template>
-
+<script lang="ts" setup>
+	const { data } = useAuth()
+	console.log(data.value)
+</script>
 <script lang="ts">
 
 export default defineComponent({
@@ -36,7 +40,7 @@ export default defineComponent({
 	},
 	methods: {
 		submitForm() {
-
+			console.log(data.value)
 		},
 	},
 });
