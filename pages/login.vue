@@ -29,7 +29,7 @@
 				<div class="flex items-center justify-between">
 					<button
 						class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-						@click.prevent="signIn('credentials', { username: this.username, password: this.password, callbackUrl: '/'})"
+						@click.prevent="handleSignIn"
 					>
 						Sign In
 					</button>
@@ -46,12 +46,16 @@
 </template>
 
 <script lang="ts" setup>
-	const { signIn } = useAuth()
-	definePageMeta({
-		auth: {
-			navigateAuthenticatedTo: 'http://ec2-44-203-149-17.compute-1.amazonaws.com/',
-		}
-	})
+	const { status, signIn } = useAuth()
+	// definePageMeta({
+	// 	auth: {
+	// 		navigateAuthenticatedTo: 'http://ec2-44-203-149-17.compute-1.amazonaws.com/',
+	// 	}
+	// })
+	async function handleSignIn() {
+		await signIn({ callbackUrl: 'http://ec2-44-203-149-17.compute-1.amazonaws.com/' })
+		console.log(status.value)
+	}
 </script>
 <script lang="ts">
 export default defineComponent({

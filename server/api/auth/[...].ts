@@ -7,11 +7,11 @@ import { compare } from 'bcrypt'
 export default NuxtAuthHandler({
     secret: process.env.AUTH_SECRET,
     pages: {
-        signIn: '/auth/signin',
-        signOut: '/auth/signout',
-        error: '/auth/error', // Error code passed in query string as ?error=
+        // signIn: 'http://ec2-44-203-149-17.compute-1.amazonaws.com/api/auth/signin',
+        // signOut: '/auth/signout',
+        // error: 'http://ec2-44-203-149-17.compute-1.amazonaws.com/api/auth/error', // Error code passed in query string as ?error=
         // verifyRequest: '/auth/verify-request', // (used for check email message)
-        // newUser: '/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
+        // newUser: 'http://ec2-44-203-149-17.compute-1.amazonaws.com/auth/new-user' // New users will be directed here on first sign in (leave the property out if not of interest)
     },
     providers: [
         // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
@@ -19,6 +19,7 @@ export default NuxtAuthHandler({
            clientId: '67655454874051815be1',
            clientSecret: '6567c99ab118930cfa1bd156487fab5cdc9f1612'
         }),
+        // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
         CredentialsProvider.default({
             // The name to display on the sign in form (e.g. 'Sign in with...')
             name: 'Credentials',

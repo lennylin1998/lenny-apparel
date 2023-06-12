@@ -29,6 +29,7 @@ export default defineNuxtConfig({
 	},
 	modules: ['@sidebase/nuxt-auth'],
 	auth: {
+		// basePath: 'http://ec2-44-203-149-17.compute-1.amazonaws.com/api/auth',
 		origin: 'http://ec2-44-203-149-17.compute-1.amazonaws.com',
 	}
 })
